@@ -53,7 +53,7 @@ function Analysis() {
 
   const fetchSalesData = async () => {
     try {
-      const response = await axios.get(`${API_URL}/bills`);
+      const response = await axios.get(`${API_URL}/api/bills`);
       let filteredData = response.data.filter(bill => {
         const billDate = new Date(bill.date);
         return billDate >= startDate && billDate <= endDate;
