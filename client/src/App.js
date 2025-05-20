@@ -66,7 +66,7 @@ function App() {
 
   const fetchBills = async () => {
     try {
-      const response = await axios.get(`${API_URL}/bills`);
+      const response = await axios.get(`${API_URL}api//bills`);
       setBills(response.data);
       
       // Calculate current month's total
@@ -104,9 +104,9 @@ function App() {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.put(`${API_URL}/bills/${editingId}`, formData);
+        await axios.put(`${API_URL}/api/bills/${editingId}`, formData);
       } else {
-        await axios.post(`${API_URL}/bills`, formData);
+        await axios.post(`${API_URL}/api/bills`, formData);
       }
       fetchBills();
       resetForm();
@@ -129,7 +129,7 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_URL}/bills/${id}`);
+      await axios.delete(`${API_URL}/api/bills/${id}`);
       fetchBills();
     } catch (error) {
       console.error('Error deleting bill:', error);
