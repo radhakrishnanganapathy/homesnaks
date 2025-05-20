@@ -6,14 +6,24 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Update CORS configuration
+// // Update CORS configuration
+// app.use(cors({
+//   origin: process.env.NODE_ENV === 'production' 
+//     ? ['https://honesnaks.netlify.app', 'http://localhost:3000']
+//     : 'http://localhost:3000',
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   credentials: true
+// }));
+
+// ✅ Allow requests from your Netlify frontend
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://honesnaks.netlify.app/', 'http://localhost:3000']
-    : 'http://localhost:3000',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: 'https://honesnaks.netlify.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   credentials: true
 }));
+
+// ✅ Handle preflight requests for all routes
+app.options('*', cors());
 
 app.use(bodyParser.json());
 
@@ -51,7 +61,7 @@ app.get('/api/bills', (req, res) => {
   });
 });
 
-app.post('/api/bills', (req, res) => {
+app.post('/bills', (req, res) => {
   const { date, customer_name, product, quantity, base_price, total_price } = req.body;
   db.run(
     'INSERT INTO bills (date, customer_name, product, quantity, base_price, total_price) VALUES (?, ?, ?, ?, ?, ?)',
