@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000;
 // Update CORS configuration
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-netlify-domain.netlify.app', 'http://localhost:3000']
+    ? ['https://honesnaks.netlify.app/', 'http://localhost:3000']
     : 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
