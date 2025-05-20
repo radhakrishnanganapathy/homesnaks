@@ -3,7 +3,7 @@ import {
   Container,
   Paper,
   Typography,
-  Box,
+  // Box,
   Grid,
   FormControl,
   InputLabel,
@@ -49,7 +49,7 @@ function Analysis() {
 
   useEffect(() => {
     fetchSalesData();
-  }, [startDate, endDate, selectedProduct]);
+  }, [fetchSalesData]);
 
   const fetchSalesData = async () => {
     try {
