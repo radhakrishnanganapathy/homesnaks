@@ -66,7 +66,7 @@ function App() {
 
   const fetchBills = async () => {
     try {
-      const response = await axios.get(`${API_URL}api//bills`);
+      const response = await axios.get(`${API_URL}/api/bills`);
       setBills(response.data);
       
       // Calculate current month's total
