@@ -61,7 +61,7 @@ app.get('/api/bills', (req, res) => {
   });
 });
 
-app.post('/bills', (req, res) => {
+app.post('/api/bills', (req, res) => {
   const { date, customer_name, product, quantity, base_price, total_price } = req.body;
   db.run(
     'INSERT INTO bills (date, customer_name, product, quantity, base_price, total_price) VALUES (?, ?, ?, ?, ?, ?)',
