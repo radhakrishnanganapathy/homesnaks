@@ -49,7 +49,7 @@ function Analysis() {
 
   useEffect(() => {
     fetchSalesData();
-  }, [fetchSalesData]);
+  }, [startDate, endDate, selectedProduct]);
 
   const fetchSalesData = async () => {
     try {
